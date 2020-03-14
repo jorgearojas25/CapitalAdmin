@@ -10,6 +10,21 @@ const AddBarrios = body => {
   });
 };
 
+const AddListBarrios = async body => {
+  if(Array.isArray(body)){
+    Promise.reject('Invalid array data')
+  }
+  let arraySaved = [];
+  for (const barrio in body) {
+    if (body.hasOwnProperty(barrio)) {
+      const element = body[barrio];
+      let savedElement = await barrioStore.add(element);
+      arraySaved.push(savedElement);
+    }
+  }
+  return arraySaved;
+}
+
 const GetBarrios = body => {
   return new Promise((resolve, reject) => {
     resolve(barriosStore.list(body));
@@ -43,6 +58,7 @@ const DeleteBarrios = _id => {
 
 module.exports = {
   AddBarrios,
+  AddListBarrios,
   GetBarrios,
   UpdateBarrios,
   DeleteBarrios
