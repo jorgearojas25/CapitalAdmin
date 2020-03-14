@@ -23,6 +23,14 @@ router.post("/", (req, res) => {
     });
 });
 
+router.post("/guardarLista", (req, res) => {
+    controller.AddListTipoBarrio(req.body).then(data => {
+        response.success(req, res, data, 201)
+    }).catch(e => {
+        response.error(req, res, `Error interno`, 500, `${e}`)
+    })
+})
+
 // Actualizar uno
 router.patch("/", (req, res) => {
     controller.UpdateTipoBarrio(req.body).then(data => 

@@ -1,6 +1,7 @@
 const Model = require("../Models/tipoBarrioModel");
 
 const AddTipoBarrio = async tipoBarrio => {
+  tipoBarrio._id = null;
   const myTipoBarrio = new Model(tipoBarrio);
   return await myTipoBarrio.save();
 };

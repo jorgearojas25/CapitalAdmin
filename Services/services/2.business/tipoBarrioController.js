@@ -10,6 +10,21 @@ const AddTipoBarrio = body => {
   });
 };
 
+const AddListTipoBarrio = async body => {
+  if(Array.isArray(body)){
+    Promise.reject('Invalid array data')
+  }
+  let arraySaved = [];
+  for (const tipoBarrio in body) {
+    if (body.hasOwnProperty(tipoBarrio)) {
+      const element = body[tipoBarrio];
+      let savedElement = await tipoBarrioStore.add(element);
+      arraySaved.push(savedElement);
+    }
+  }
+  return arraySaved;
+}
+
 const GetTipoBarrio = body => {
   return new Promise((resolve, reject) => {
     resolve(tipoBarrioStore.list(body));
@@ -43,6 +58,7 @@ const DeleteTipoBarrio = _id => {
 
 module.exports = {
   AddTipoBarrio,
+  AddListTipoBarrio,
   GetTipoBarrio,
   UpdateTipoBarrio,
   DeleteTipoBarrio
