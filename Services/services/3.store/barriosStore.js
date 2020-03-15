@@ -1,7 +1,8 @@
 const Model = require("../Models/barriosModel");
+const mongoose = require('mongoose');
 
 const AddBarrios = async barrios => {
-  barrios._id = null;
+  barrios._id = new mongoose.Types.ObjectId;
   const myBarrios = new Model(barrios);
   return await myBarrios.save();
 };

@@ -1,4 +1,4 @@
-class persona {
+class Persona {
   constructor() {
     (this._id = data._id),
     (this.IdFamilia = data.IdFamilia),
@@ -10,3 +10,5 @@ class persona {
     (this.SegundoApellido = data.SegundoApellido);
   }
 }
+
+module.exports = Persona;

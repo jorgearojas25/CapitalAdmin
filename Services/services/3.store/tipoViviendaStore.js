@@ -1,7 +1,8 @@
 const Model = require("../Models/tipoViviendaModel");
+const mongoose = require('mongoose');
 
 const AddTipoVivienda = async tipoVivienda => {
-  tipoVivienda._id = null;
+  tipoVivienda._id = new mongoose.Types.ObjectId;
   const myTipoVivienda = new Model(tipoVivienda);
   return await myTipoVivienda.save();
 };

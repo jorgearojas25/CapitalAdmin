@@ -1,14 +1,14 @@
 {
   "name": "nodejspractice",
   "version": "0.1.0",
-  "description": "Chat en backend basico",
+  "description": "Services for capital Admin",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jorgearojas25/nodeJsPractice.git"
+    "url": "git+https://github.com/jorgearojas25/CapitalAdmin.git"
   },
   "keywords": [
     "chat",
@@ -18,9 +18,9 @@
   "author": "Jorge Rojas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jorgearojas25/nodeJsPractice/issues"
+    "url": "https://github.com/jorgearojas25/CapitalAdmin/issues"
   },
-  "homepage": "https://github.com/jorgearojas25/nodeJsPractice#readme",
+  "homepage": "https://github.com/jorgearojas25/CapitalAdmin#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

@@ -5,3 +5,5 @@ class TipoPersona{
         this._id = data._id
     }
 }
+
+module.exports = TipoPersona;

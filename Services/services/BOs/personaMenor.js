@@ -7,3 +7,5 @@ class PersonaMenor {
       (this.HistorialMedico = data.HistorialMedico);
   }
 }
+
+module.exports = PersonaMenor;

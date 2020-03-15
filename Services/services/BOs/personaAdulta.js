@@ -9,3 +9,5 @@ class PersonaAdulta {
       (this.Salario = data.Salario);
   }
 }
+
+module.exports = PersonaAdulta;

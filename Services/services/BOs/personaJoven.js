@@ -8,3 +8,5 @@ class PersonaJoven{
     this.Curso= data.Curso
     }
 }
+
+module.exports = PersonaJoven;

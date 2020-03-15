@@ -1,7 +1,8 @@
 const Model = require("../Models/rutaModel");
+const mongoose = require('mongoose');
 
 const AddRuta = async ruta => {
-  ruta._id = null;
+  ruta._id = new mongoose.Types.ObjectId;
   const myRuta = new Model(ruta);
   return await myRuta.save();
 };

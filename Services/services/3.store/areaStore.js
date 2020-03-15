@@ -1,7 +1,8 @@
 const Model = require("../Models/areasModel");
+const mongoose = require('mongoose');
 
 const AddArea = async area => {
-  area._id = null;
+  area._id = new mongoose.Types.ObjectId;
   const myArea = new Model(area);
   return await myArea.save();
 };

@@ -7,3 +7,5 @@ class Entidad {
       (this._id = data._id);
   }
 }
+
+module.exports = Entidad;

@@ -1,4 +1,4 @@
-class barrios {
+class Barrios {
   constructor(data) {
     this._id = data._id,
     this.NombreBarrio = data.NombreBarrio,
@@ -9,3 +9,5 @@ class barrios {
     this.Rutas = data.Rutas
   }
 }
+
+module.exports = Barrios

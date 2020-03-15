@@ -9,3 +9,5 @@ class Familia{
     this._id = data._id
     }
 }
+
+module.exports = Familia;
