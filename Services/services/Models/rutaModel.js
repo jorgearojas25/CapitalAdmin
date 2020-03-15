@@ -7,4 +7,4 @@ const mySchema = new Schema({
 });
 
 const model = mongoose.model('Rutas', mySchema);
-module.exports(model);
+module.exports = model;

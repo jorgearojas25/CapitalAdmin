@@ -7,4 +7,4 @@ const mySchema = new Schema({
 });
 
 const model = mongoose.model('Area', mySchema);
-module.exports(model);
+module.exports = model;

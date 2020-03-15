@@ -18,7 +18,7 @@ const AddListBarrios = async body => {
   for (const barrio in body) {
     if (body.hasOwnProperty(barrio)) {
       const element = body[barrio];
-      let savedElement = await barrioStore.add(element);
+      let savedElement = await barriosStore.add(element);
       arraySaved.push(savedElement);
     }
   }

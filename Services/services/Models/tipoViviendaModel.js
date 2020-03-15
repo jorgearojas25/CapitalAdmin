@@ -6,5 +6,5 @@ const mySchema = new Schema({
     Activo: {type: Boolean, default: true}
 });
 
-const model = mongoose.model('Rutas', mySchema);
-module.exports(model);
+const model = mongoose.model('TipoVivienda', mySchema);
+module.exports = model;

@@ -7,12 +7,23 @@ const AddBarrios = async barrios => {
 };
 
 const GetBarrios = async myFilter => {
-  let filter = {};
-  if (myFilter !== null) {
-    filter = myFilter;
-  }
-  const barrios = await Model.find(filter);
-  return barrios;
+  return new Promise((resolve, reject) => {
+    let filter = {};
+    if (myFilter !== null) {
+      filter = myFilter;
+    }
+    const barrios = Model.find(filter)
+      .populate("IdArea")
+      .populate("IdTipoBarrio")
+      .populate("Rutas")
+      .exec((error, populated) => {
+        if (error) {
+          reject(error);
+          return false;
+        }
+        resolve(populated);
+      });
+  });
 };
 
 const UpdateBarrios = async body => {

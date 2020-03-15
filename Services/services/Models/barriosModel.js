@@ -14,4 +14,4 @@ const mySchema = new Schema({
 });
 
 const model = mongoose.model('Barrios', mySchema);
-module.exports(model);
+module.exports = model;
