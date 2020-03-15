@@ -1,0 +1,11 @@
+class Familia{
+    constructor(data){
+    this.Calle= data.Calle,
+    this.Numero= data.Numero,
+    this.Telefono= data.Telefono,
+    this.IdTipoVivienda= data.IdTipoVivienda,
+    this.IdBarrio= data.IdBarrio,
+    this.IngresoFamiliar= data.IngresoFamiliar,
+    this._id = data._id
+    }
+}
