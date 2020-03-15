@@ -7,7 +7,9 @@ const router = require("./network/routes");
 const db = require("./db");
 const config = require("./config");
 
-db(config.dbUrl);
+console.log(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`)
+
+db(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -17,10 +17,8 @@ const GetRuta = async myFilter => {
 };
 
 const UpdateRuta = async body => {
-  const foundRuta = Model.findById(body._id);
-  foundRuta = body;
-  foundRuta._id = body._id;
-  const updatedRuta = await foundRuta.save();
+  const foundRuta = await Model.findByIdAndUpdate(body._id,body);
+  const updatedRuta = await Model.findById(body._id);
   return updatedRuta;
 };
 

@@ -17,10 +17,8 @@ const GetActividadEconomica = async myFilter => {
 };
 
 const UpdateActividadEconomica = async body => {
-  const foundActividadEconomica = Model.findById(body._id);
-  foundActividadEconomica = body;
-  foundActividadEconomica._id = body._id;
-  const updatedActividadEconomica = await foundActividadEconomica.save();
+  const foundActividadEconomica = await Model.findByIdAndUpdate(body._id,body);
+  const updatedActividadEconomica = await Model.findById(body._id);
   return updatedActividadEconomica;
 };
 

@@ -5,7 +5,6 @@ const objTipoPersona = require("../BOs/tipoPersona");
 const AddTipoPersona = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objTipoPersona(body);
-    tipoPersonaStore.add(respuesta);
     resolve(tipoPersonaStore.add(respuesta));
   });
 };

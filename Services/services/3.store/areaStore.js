@@ -17,10 +17,8 @@ const GetArea = async myFilter => {
 };
 
 const UpdateArea = async body => {
-  const foundArea = Model.findById(body._id);
-  foundArea = body;
-  foundArea._id = body._id;
-  const updatedArea = await foundArea.save();
+  const foundArea = await Model.findByIdAndUpdate(body._id,body);
+  const updatedArea = await Model.findById(body._id);
   return updatedArea;
 };
 

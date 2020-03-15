@@ -17,10 +17,8 @@ const GetTipoVivienda = async myFilter => {
 };
 
 const UpdateTipoVivienda = async body => {
-  const foundTipoVivienda = Model.findById(body._id);
-  foundTipoVivienda = body;
-  foundTipoVivienda._id = body._id;
-  const updatedTipoVivienda = await foundTipoVivienda.save();
+  const foundTipoVivienda = await Model.findByIdAndUpdate(body._id,body);
+  const updatedTipoVivienda = await Model.findById(body._id);
   return updatedTipoVivienda;
 };
 

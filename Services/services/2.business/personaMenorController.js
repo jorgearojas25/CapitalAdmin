@@ -5,7 +5,6 @@ const objPersonaMenor = require("../BOs/personaMenor");
 const AddPersonaMenor = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objPersonaMenor(body);
-    personaMenorStore.add(respuesta);
     resolve(personaMenorStore.add(respuesta));
   });
 };

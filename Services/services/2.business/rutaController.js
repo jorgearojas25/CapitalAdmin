@@ -5,7 +5,6 @@ const objRuta = require("../BOs/ruta");
 const AddRuta = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objRuta(body);
-    rutaStore.add(respuesta);
     resolve(rutaStore.add(respuesta));
   });
 };

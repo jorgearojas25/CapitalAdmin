@@ -5,7 +5,6 @@ const objTipoEntidad = require("../BOs/tipoEntidad");
 const AddTipoEntidad = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objTipoEntidad(body);
-    tipoEntidadStore.add(respuesta);
     resolve(tipoEntidadStore.add(respuesta));
   });
 };

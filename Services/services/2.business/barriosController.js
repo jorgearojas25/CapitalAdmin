@@ -5,7 +5,6 @@ const objBarrios = require("../BOs/barrios");
 const AddBarrios = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objBarrios(body);
-    barriosStore.add(respuesta);
     resolve(barriosStore.add(respuesta));
   });
 };

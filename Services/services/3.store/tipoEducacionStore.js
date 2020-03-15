@@ -17,10 +17,8 @@ const GetTipoEducacion = async myFilter => {
 };
 
 const UpdateTipoEducacion = async body => {
-  const foundTipoEducacion = Model.findById(body._id);
-  foundTipoEducacion = body;
-  foundTipoEducacion._id = body._id;
-  const updatedTipoEducacion = await foundTipoEducacion.save();
+  const foundTipoEducacion = await Model.findByIdAndUpdate(body._id,body);
+  const updatedTipoEducacion = await Model.findById(body._id);
   return updatedTipoEducacion;
 };
 

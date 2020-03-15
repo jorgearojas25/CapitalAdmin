@@ -17,10 +17,8 @@ const GetTipoBarrio = async myFilter => {
 };
 
 const UpdateTipoBarrio = async body => {
-  const foundTipoBarrio = Model.findById(body._id);
-  foundTipoBarrio = body;
-  foundTipoBarrio._id = body._id;
-  const updatedTipoBarrio = await foundTipoBarrio.save();
+  const foundTipoBarrio = await Model.findByIdAndUpdate(body._id,body);
+  const updatedTipoBarrio = await Model.findById(body._id);
   return updatedTipoBarrio;
 };
 

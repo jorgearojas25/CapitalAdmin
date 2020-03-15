@@ -5,7 +5,6 @@ const objHistorialMedico = require("../BOs/historialMedico");
 const AddHistorialMedico = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objHistorialMedico(body);
-    historialMedicoStore.add(respuesta);
     resolve(historialMedicoStore.add(respuesta));
   });
 };

@@ -5,7 +5,6 @@ const objEntidad = require("../BOs/entidad");
 const AddEntidad = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objEntidad(body);
-    entidadStore.add(respuesta);
     resolve(entidadStore.add(respuesta));
   });
 };

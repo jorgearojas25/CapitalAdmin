@@ -5,7 +5,6 @@ const objTipoVivienda = require("../BOs/tipoVivienda");
 const AddTipoVivienda = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objTipoVivienda(body);
-    tipoViviendaStore.add(respuesta);
     resolve(tipoViviendaStore.add(respuesta));
   });
 };

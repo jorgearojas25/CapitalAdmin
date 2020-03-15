@@ -5,7 +5,6 @@ const objArea = require("../BOs/area");
 const AddArea = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objArea(body);
-    areaStore.add(respuesta);
     resolve(areaStore.add(respuesta));
   });
 };

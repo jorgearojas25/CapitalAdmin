@@ -17,10 +17,8 @@ const GetEntidad = async myFilter => {
 };
 
 const UpdateEntidad = async body => {
-  const foundEntidad = Model.findById(body._id);
-  foundEntidad = body;
-  foundEntidad._id = body._id;
-  const updatedEntidad = await foundEntidad.save();
+  const foundEntidad = await Model.findByIdAndUpdate(body._id,body);
+  const updatedEntidad = await Model.findById(body._id);
   return updatedEntidad;
 };
 

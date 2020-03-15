@@ -5,7 +5,6 @@ const objTipoEducacion = require("../BOs/tipoEducacion");
 const AddTipoEducacion = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objTipoEducacion(body);
-    tipoEducacionStore.add(respuesta);
     resolve(tipoEducacionStore.add(respuesta));
   });
 };

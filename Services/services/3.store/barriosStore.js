@@ -28,10 +28,8 @@ const GetBarrios = async myFilter => {
 };
 
 const UpdateBarrios = async body => {
-  const foundBarrios = Model.findById(body._id);
-  foundBarrios = body;
-  foundBarrios._id = body._id;
-  const updatedBarrios = await foundBarrios.save();
+  const foundBarrios = await Model.findByIdAndUpdate(body._id,body);
+  const updatedBarrios = await Model.findById(body._id);
   return updatedBarrios;
 };
 

@@ -17,10 +17,8 @@ const GetPersonaMenor = async myFilter => {
 };
 
 const UpdatePersonaMenor = async body => {
-  const foundPersonaMenor = Model.findById(body._id);
-  foundPersonaMenor = body;
-  foundPersonaMenor._id = body._id;
-  const updatedPersonaMenor = await foundPersonaMenor.save();
+  const foundPersonaMenor = await Model.findByIdAndUpdate(body._id,body);
+  const updatedPersonaMenor = await Model.findById(body._id);
   return updatedPersonaMenor;
 };
 

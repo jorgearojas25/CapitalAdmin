@@ -17,10 +17,8 @@ const GetTipoPersona = async myFilter => {
 };
 
 const UpdateTipoPersona = async body => {
-  const foundTipoPersona = Model.findById(body._id);
-  foundTipoPersona = body;
-  foundTipoPersona._id = body._id;
-  const updatedTipoPersona = await foundTipoPersona.save();
+  const foundTipoPersona = await Model.findByIdAndUpdate(body._id,body);
+  const updatedTipoPersona = await Model.findById(body._id);
   return updatedTipoPersona;
 };
 

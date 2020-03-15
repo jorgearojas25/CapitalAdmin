@@ -17,10 +17,8 @@ const GetFamilia = async myFilter => {
 };
 
 const UpdateFamilia = async body => {
-  const foundFamilia = Model.findById(body._id);
-  foundFamilia = body;
-  foundFamilia._id = body._id;
-  const updatedFamilia = await foundFamilia.save();
+  const foundFamilia = await Model.findByIdAndUpdate(body._id,body);
+  const updatedFamilia = await Model.findById(body._id);
   return updatedFamilia;
 };
 

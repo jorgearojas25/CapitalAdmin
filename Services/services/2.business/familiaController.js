@@ -5,7 +5,6 @@ const objFamilia = require("../BOs/familia");
 const AddFamilia = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objFamilia(body);
-    familiaStore.add(respuesta);
     resolve(familiaStore.add(respuesta));
   });
 };

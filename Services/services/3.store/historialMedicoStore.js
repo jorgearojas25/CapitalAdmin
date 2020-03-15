@@ -17,10 +17,8 @@ const GetHistorialMedico = async myFilter => {
 };
 
 const UpdateHistorialMedico = async body => {
-  const foundHistorialMedico = Model.findById(body._id);
-  foundHistorialMedico = body;
-  foundHistorialMedico._id = body._id;
-  const updatedHistorialMedico = await foundHistorialMedico.save();
+  const foundHistorialMedico = await Model.findByIdAndUpdate(body._id,body);
+  const updatedHistorialMedico = await Model.findById(body._id);
   return updatedHistorialMedico;
 };
 

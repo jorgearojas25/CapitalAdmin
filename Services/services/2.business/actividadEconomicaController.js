@@ -5,7 +5,6 @@ const objActividadEconomica = require("../BOs/actividadEconomica");
 const AddActividadEconomica = body => {
   return new Promise((resolve, reject) => {
     let respuesta = new objActividadEconomica(body);
-    actividadEconomicaStore.add(respuesta);
     resolve(actividadEconomicaStore.add(respuesta));
   });
 };
