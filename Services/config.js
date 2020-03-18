@@ -1,9 +1,7 @@
 require('dotenv').config();
 
 const config = {
-  dbUrl:
-    process.env.DB_URL ||
-    "mongodb+srv://dbuser:D3s4rr0ll0@cluster0-w7ttm.mongodb.net/test",
+  dev: process.env.NODE_ENV !== 'production',
   host: process.env.HOST,
   port: process.env.PORT,
   publicRoute: process.env.PUBLIC_ROUTE,

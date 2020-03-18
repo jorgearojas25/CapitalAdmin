@@ -1,5 +1,5 @@
 {
-  "name": "nodejspractice",
+  "name": "capital-admin",
   "version": "0.1.0",
   "description": "Services for capital Admin",
   "main": "server.js",
@@ -11,8 +11,8 @@
     "url": "git+https://github.com/jorgearojas25/CapitalAdmin.git"
   },
   "keywords": [
-    "chat",
-    "telegram",
+    "admin",
+    "organization",
     "server"
   ],
   "author": "Jorge Rojas",

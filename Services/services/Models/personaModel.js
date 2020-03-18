@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
     IdFamilia: {type: Schema.ObjectId, ref: 'Familia'},
-    FechaDeNacimiento: Date,
+    IdTipoPersona: {type: Schema.ObjectId, ref: 'TipoPersona'},
+    FechaDeNacimiento: {type: Date, required: true},
     LugarDeNacimiento: String,
     PrimerNombre:{type: String, required: true},
     SegundoNombre: String,
