@@ -10,6 +10,7 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
+  HomeWork as HomeWorkIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -46,6 +47,12 @@ const structure = [
   },
   {
     id: 4,
+    label: "Barrios",
+    link: "/app/Barrios",
+    icon: <HomeWorkIcon />,
+  },
+  {
+    id: 5,
     label: "UI Elements",
     link: "/app/ui",
     icon: <UIElementsIcon />,
@@ -55,27 +62,42 @@ const structure = [
       { label: "Maps", link: "/app/ui/maps" },
     ],
   },
-  { id: 5, type: "divider" },
-  { id: 6, type: "title", label: "HELP" },
-  { id: 7, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 8, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 9, label: "FAQ", link: "", icon: <FAQIcon /> },
-  { id: 10, type: "divider" },
-  { id: 11, type: "title", label: "PROJECTS" },
   {
-    id: 12,
+    id: 7,
+    label: "Parametros",
+    link: "/app/Parametros",
+    icon: <UIElementsIcon />,
+    children: [
+      { label: "Tipo vivienda", link: "/app/Parametros/TipoVivienda" },
+      { label: "Tipo barrio", link: "/app/Parametros/TipoBarrio" },
+      { label: "Tipo entidad", link: "/app/Parametros/TipoEntidad" },
+      { label: "Tipo educacion", link: "/app/Parametros/TipoEducacion" },
+      { label: "Tipo actividad economica", link: "/app/Parametros/TipoActividadEconomica" },
+      { label: "Rutas", link: "/app/Parametros/Rutas" },
+      { label: "Enfermedades cubiertas", link: "app/Parametros/EnfermedadesCubiertas"}
+    ],
+  },
+  { id: 8, type: "divider" },
+  { id: 9, type: "title", label: "HELP" },
+  { id: 10, label: "Library", link: "", icon: <LibraryIcon /> },
+  { id: 11, label: "Support", link: "", icon: <SupportIcon /> },
+  { id: 12, label: "FAQ", link: "", icon: <FAQIcon /> },
+  { id: 13, type: "divider" },
+  { id: 14, type: "title", label: "PROJECTS" },
+  {
+    id: 15,
     label: "My recent",
     link: "",
     icon: <Dot size="large" color="warning" />,
   },
   {
-    id: 13,
+    id: 16,
     label: "Starred",
     link: "",
     icon: <Dot size="large" color="primary" />,
   },
   {
-    id: 14,
+    id: 17,
     label: "Background",
     link: "",
     icon: <Dot size="large" color="secondary" />,
