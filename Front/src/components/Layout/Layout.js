@@ -26,7 +26,7 @@ import TipoVivienda from "../../pages/TipoVivienda";
 import TipoEntidad from "../../pages/TipoEntidad";
 import TipoBarrio from "../../pages/TipoBarrio";
 import Barrios from "../../pages/Barrios"; 
-
+import Personas from "../../pages/Personas";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -53,6 +53,7 @@ function Layout(props) {
               <Route path="/app/tables" component={Tables} />
               <Route path="/app/notifications" component={Notifications} />
               <Route path="/app/Barrios" component={Barrios}/>
+              <Route path="/app/Personas" component={Personas}/>
               <Route
                 exact
                 path="/app/ui"
