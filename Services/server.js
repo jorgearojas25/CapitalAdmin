@@ -9,7 +9,7 @@ const config = require("./config");
 
 console.log(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`)
 
-db(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}`);
+db(`mongodb+srv://${config.dbUser}:${config.dbPassword}@${config.dbHost}/${config.dbName}?retryWrites=true&w=majority`);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
