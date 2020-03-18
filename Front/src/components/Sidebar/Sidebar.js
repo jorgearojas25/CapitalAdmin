@@ -74,7 +74,7 @@ const structure = [
       { label: "Tipo educacion", link: "/app/Parametros/TipoEducacion" },
       { label: "Tipo actividad economica", link: "/app/Parametros/TipoActividadEconomica" },
       { label: "Rutas", link: "/app/Parametros/Rutas" },
-      { label: "Enfermedades cubiertas", link: "app/Parametros/EnfermedadesCubiertas"}
+      { label: "Enfermedades cubiertas", link: "/app/Parametros/EnfermedadesCubiertas"}
     ],
   },
   { id: 8, type: "divider" },

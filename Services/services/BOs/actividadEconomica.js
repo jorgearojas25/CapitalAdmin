@@ -1,6 +1,6 @@
 class ActividadEconomica{
     constructor(data){
-        this.NombreActividadEconomica= data.NombreActividadEconomica,
+        this.NombreTipoActividadEconomica = data.NombreTipoActividadEconomica,
         this.Activo= data.Activo,
         this._id = data._id
     }
