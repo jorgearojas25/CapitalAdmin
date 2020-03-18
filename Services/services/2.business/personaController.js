@@ -1,17 +1,45 @@
 const personaStore = require("../3.store/personaStore");
 const config = require("../../config");
 const objPersona = require("../BOs/persona");
+const evaluarTipoPersona = require("./utils/EvaluarEdad");
+const tipoPersonaController = require("./tipoPersonaController");
 
 const AddPersona = body => {
-  return new Promise((resolve, reject) => {
-    let respuesta = new objPersona(body);
-    resolve(personaStore.add(respuesta));
+  return new Promise(async (resolve, reject) => {
+    let objAdd = new objPersona(body);
+    let enumTipoPersona = evaluarTipoPersona(objAdd.FechaDeNacimiento);
+    let tipoPersona =  definirTipoPersona(enumTipoPersona);
+    let consultaTipoPersona = await tipoPersonaController.GetTipoPersona({NombreTipoPersona: tipoPersona});
+    objAdd.IdTipoPersona = consultaTipoPersona[0]._id;
+    console.log(consultaTipoPersona);
+    let responseStore = await personaStore.add(objAdd);
+    let respuesta = new objPersona(responseStore);
+    respuesta.TipoPersona = enumTipoPersona;
+    resolve(respuesta);
   });
 };
 
+const definirTipoPersona = tipoEnum => {
+  let response = "";
+  switch (tipoEnum) {
+    case 1:
+      response = "Menor";
+      break;
+    case 2:
+      response = "Joven";
+      break;
+    case 3:
+      response = "Adulto";
+      break;
+    default:
+      break;
+  }
+  return response;
+};
+
 const AddListPersona = async body => {
-  if(Array.isArray(body)){
-    Promise.reject('Invalid array data')
+  if (Array.isArray(body)) {
+    Promise.reject("Invalid array data");
   }
   let arraySaved = [];
   for (const persona in body) {
@@ -22,7 +50,7 @@ const AddListPersona = async body => {
     }
   }
   return arraySaved;
-}
+};
 
 const GetPersona = body => {
   return new Promise((resolve, reject) => {

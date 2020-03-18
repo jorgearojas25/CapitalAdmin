@@ -3,9 +3,11 @@ const config = require("../../config");
 const objTipoPersona = require("../BOs/tipoPersona");
 
 const AddTipoPersona = body => {
-  return new Promise((resolve, reject) => {
-    let respuesta = new objTipoPersona(body);
-    resolve(tipoPersonaStore.add(respuesta));
+  return new Promise(async(resolve, reject) => {
+    let objAdd = new objTipoPersona(body);
+    let responseStore = await tipoPersonaStore.add(objAdd);
+    let respuesta = new objTipoPersona(responseStore);
+    resolve(respuesta);
   });
 };
 
