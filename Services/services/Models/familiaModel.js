@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
+    NombreFamilia: {type:String, required: true},
     Calle: String,
     Numero: String,
     Telefono: Number,

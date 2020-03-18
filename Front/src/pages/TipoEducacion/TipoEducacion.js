@@ -9,22 +9,20 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import IconosTabla from "../../components/TableIcons";
 
 
-export default function TipoEntidad() {
-const [tipoEntidad, setTipoEntidad] = useState([]);
-const myURI = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
-const url = 'http://localhost:5500/TipoEntidad';
-
+export default function TipoEducacion() {
+const [tipoEducacion, setTipoEducacion] = useState([]);
+const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoEducacion}`;
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoEntidad')
+    const response = await window.fetch(url)
     const data = await response.json()
-    setTipoEntidad(data.entidades);
+    setTipoEducacion(data.entidades);
   }
   FetchData();
 
 },[]) 
 
-const agregarTipoEntidad = async(data) => {
+const agregarTipoEducacion = async(data) => {
   fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
@@ -36,7 +34,7 @@ const agregarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const eliminarTipoEntidad = async(data) => {
+const eliminarTipoEducacion = async(data) => {
   fetch(url+'/'+data, {
     method: 'DELETE', // or 'PUT'
     headers:{
@@ -47,7 +45,7 @@ const eliminarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const editarTipoEntidad = async(data) => {
+const editarTipoEducacion = async(data) => {
     console.log(data);
     fetch(url, {
       method: 'PATCH', // or 'PUT'
@@ -60,28 +58,28 @@ const editarTipoEntidad = async(data) => {
     .then(response => console.log('Success:', response));
 }
 
-console.log(tipoEntidad);
-  if(tipoEntidad !== []) {
+console.log(tipoEducacion);
+  if(tipoEducacion !== []) {
     return (
       <>
-        <PageTitle title="Tipo Entidad" />
+        <PageTitle title="Tipo Educacion" />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <MaterialTable 
               columns={[
-                        {title: "Nombre",field:"NombreTipoEntidad"},
+                        {title: "Nombre",field:"NombreTipoEducacion"},
                         {title: "Activo", field:"Activo", lookup:{true:<Check></Check>, false:<Cancel></Cancel>}}]}
-              data= {tipoEntidad}
+              data= {tipoEducacion}
               title={""}
               editable={{
                 onRowAdd: newData =>
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...tipoEducacion];
                       datos.push(newData);
-                      agregarTipoEntidad(newData).then(() => {
-                        setTipoEntidad(datos);
+                      agregarTipoEducacion(newData).then(() => {
+                        setTipoEducacion(datos);
                       })
                     }, 600);
                   }),
@@ -90,11 +88,11 @@ console.log(tipoEntidad);
                     setTimeout(() => {
                       resolve();
                       if (oldData) {
-                        const datos = [...tipoEntidad];
+                        const datos = [...tipoEducacion];
                         const index = datos.indexOf(oldData);
                         datos[index] =  newData;
-                        editarTipoEntidad(datos[index]).then(() => {
-                            setTipoEntidad(datos);
+                        editarTipoEducacion(datos[index]).then(() => {
+                            setTipoEducacion(datos);
                         });
                       }
                     }, 600);
@@ -103,12 +101,12 @@ console.log(tipoEntidad);
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...tipoEducacion];
                       const datosAEliminar = datos[datos.indexOf(oldData)];
                       console.log(datosAEliminar._id);
-                      eliminarTipoEntidad(datosAEliminar._id).then(() => {
+                      eliminarTipoEducacion(datosAEliminar._id).then(() => {
                         datos.splice(datos.indexOf(oldData),1);
-                        setTipoEntidad(datos);
+                        setTipoEducacion(datos);
                       })
                     }, 600);
                   }),

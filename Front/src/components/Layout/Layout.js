@@ -25,6 +25,10 @@ import Charts from "../../pages/charts";
 import TipoVivienda from "../../pages/TipoVivienda";
 import TipoEntidad from "../../pages/TipoEntidad";
 import TipoBarrio from "../../pages/TipoBarrio";
+import TipoEducacion  from "../../pages/TipoEducacion";
+import TipoActividadEconomica from "../../pages/TipoActividadEconomica";
+import Rutas from "../../pages/Rutas";
+import EnfermedadesCubiertas from "../../pages/EnfermedadesCubiertas";
 import Barrios from "../../pages/Barrios"; 
 import Personas from "../../pages/Personas";
 // context
@@ -59,13 +63,17 @@ function Layout(props) {
                 path="/app/ui"
                 render={() => <Redirect to="/app/ui/icons" />}
               />
+              
+              <Route path="/app/ui/icons" component={Icons}/>
+              <Route path="/app/ui/charts" component={Charts}/>
+              <Route path="/app/ui/maps" component={Maps}/>
               <Route path="/app/Parametros/TipoVivienda" component={TipoVivienda} />
               <Route path="/app/Parametros/TipoBarrio" component={TipoBarrio} />
               <Route path="/app/Parametros/TipoEntidad" component={TipoEntidad} />
-              <Route path="/app/Parametros/TipoEducacion" component={Maps} />
-              <Route path="/app/Parametros/TipoActividadEconomica" component={Icons} />
-              <Route path="/app/Parametros/Rutas" component={Charts} />
-              <Route path="app/Parametros/EnfermedadesCubiertas"component={Charts} />
+              <Route path="/app/Parametros/TipoEducacion" component={TipoEducacion} />
+              <Route path="/app/Parametros/TipoActividadEconomica" component={TipoActividadEconomica} />
+              <Route path="/app/Parametros/Rutas" component={Rutas} />
+              <Route path="/app/Parametros/EnfermedadesCubiertas"component={EnfermedadesCubiertas} />
             </Switch>
           </div>
         </>

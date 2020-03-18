@@ -9,22 +9,20 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import IconosTabla from "../../components/TableIcons";
 
 
-export default function TipoEntidad() {
-const [tipoEntidad, setTipoEntidad] = useState([]);
-const myURI = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
-const url = 'http://localhost:5500/TipoEntidad';
-
+export default function Rutas() {
+const [rutas, setRutas] = useState([]);
+const url = `${ApiRoutes.baseURI}${ApiRoutes.Rutas}`;
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoEntidad')
+    const response = await window.fetch(url)
     const data = await response.json()
-    setTipoEntidad(data.entidades);
+    setRutas(data.entidades);
   }
   FetchData();
 
 },[]) 
 
-const agregarTipoEntidad = async(data) => {
+const agregarRutas = async(data) => {
   fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
@@ -36,7 +34,7 @@ const agregarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const eliminarTipoEntidad = async(data) => {
+const eliminarRutas = async(data) => {
   fetch(url+'/'+data, {
     method: 'DELETE', // or 'PUT'
     headers:{
@@ -47,7 +45,7 @@ const eliminarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const editarTipoEntidad = async(data) => {
+const editarRutas = async(data) => {
     console.log(data);
     fetch(url, {
       method: 'PATCH', // or 'PUT'
@@ -60,28 +58,28 @@ const editarTipoEntidad = async(data) => {
     .then(response => console.log('Success:', response));
 }
 
-console.log(tipoEntidad);
-  if(tipoEntidad !== []) {
+console.log(rutas);
+  if(rutas !== []) {
     return (
       <>
-        <PageTitle title="Tipo Entidad" />
+        <PageTitle title="Rutas" />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <MaterialTable 
               columns={[
-                        {title: "Nombre",field:"NombreTipoEntidad"},
+                        {title: "Nombre",field:"NombreRuta"},
                         {title: "Activo", field:"Activo", lookup:{true:<Check></Check>, false:<Cancel></Cancel>}}]}
-              data= {tipoEntidad}
+              data= {rutas}
               title={""}
               editable={{
                 onRowAdd: newData =>
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...rutas];
                       datos.push(newData);
-                      agregarTipoEntidad(newData).then(() => {
-                        setTipoEntidad(datos);
+                      agregarRutas(newData).then(() => {
+                        setRutas(datos);
                       })
                     }, 600);
                   }),
@@ -90,11 +88,11 @@ console.log(tipoEntidad);
                     setTimeout(() => {
                       resolve();
                       if (oldData) {
-                        const datos = [...tipoEntidad];
+                        const datos = [...rutas];
                         const index = datos.indexOf(oldData);
                         datos[index] =  newData;
-                        editarTipoEntidad(datos[index]).then(() => {
-                            setTipoEntidad(datos);
+                        editarRutas(datos[index]).then(() => {
+                            setRutas(datos);
                         });
                       }
                     }, 600);
@@ -103,12 +101,12 @@ console.log(tipoEntidad);
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...rutas];
                       const datosAEliminar = datos[datos.indexOf(oldData)];
                       console.log(datosAEliminar._id);
-                      eliminarTipoEntidad(datosAEliminar._id).then(() => {
+                      eliminarRutas(datosAEliminar._id).then(() => {
                         datos.splice(datos.indexOf(oldData),1);
-                        setTipoEntidad(datos);
+                        setRutas(datos);
                       })
                     }, 600);
                   }),

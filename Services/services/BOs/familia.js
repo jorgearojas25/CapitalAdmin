@@ -1,5 +1,6 @@
 class Familia{
     constructor(data){
+    this.NombreFamilia = data.NombreFamilia,
     this.Calle= data.Calle,
     this.Numero= data.Numero,
     this.Telefono= data.Telefono,

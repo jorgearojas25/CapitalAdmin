@@ -9,22 +9,21 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import IconosTabla from "../../components/TableIcons";
 
 
-export default function TipoEntidad() {
-const [tipoEntidad, setTipoEntidad] = useState([]);
-const myURI = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
-const url = 'http://localhost:5500/TipoEntidad';
-
+export default function TipoActividadEconomica() {
+const [tipoActividadEconomica, setTipoActividadEconomica] = useState([]);
+const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoActividadEconomica}`;
+console.log(url);
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoEntidad')
+    const response = await window.fetch(url)
     const data = await response.json()
-    setTipoEntidad(data.entidades);
+    setTipoActividadEconomica(data.entidades);
   }
   FetchData();
 
 },[]) 
 
-const agregarTipoEntidad = async(data) => {
+const agregarTipoActividadEconomica = async(data) => {
   fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
@@ -36,7 +35,7 @@ const agregarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const eliminarTipoEntidad = async(data) => {
+const eliminarTipoActividadEconomica = async(data) => {
   fetch(url+'/'+data, {
     method: 'DELETE', // or 'PUT'
     headers:{
@@ -47,7 +46,7 @@ const eliminarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const editarTipoEntidad = async(data) => {
+const editarTipoActividadEconomica = async(data) => {
     console.log(data);
     fetch(url, {
       method: 'PATCH', // or 'PUT'
@@ -60,28 +59,28 @@ const editarTipoEntidad = async(data) => {
     .then(response => console.log('Success:', response));
 }
 
-console.log(tipoEntidad);
-  if(tipoEntidad !== []) {
+console.log(tipoActividadEconomica);
+  if(tipoActividadEconomica !== []) {
     return (
       <>
-        <PageTitle title="Tipo Entidad" />
+        <PageTitle title="Tipo Actividad Economica" />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <MaterialTable 
               columns={[
-                        {title: "Nombre",field:"NombreTipoEntidad"},
+                        {title: "Nombre",field:"NombreTipoActividadEconomica"},
                         {title: "Activo", field:"Activo", lookup:{true:<Check></Check>, false:<Cancel></Cancel>}}]}
-              data= {tipoEntidad}
+              data= {tipoActividadEconomica}
               title={""}
               editable={{
                 onRowAdd: newData =>
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...tipoActividadEconomica];
                       datos.push(newData);
-                      agregarTipoEntidad(newData).then(() => {
-                        setTipoEntidad(datos);
+                      agregarTipoActividadEconomica(newData).then(() => {
+                        setTipoActividadEconomica(datos);
                       })
                     }, 600);
                   }),
@@ -90,11 +89,11 @@ console.log(tipoEntidad);
                     setTimeout(() => {
                       resolve();
                       if (oldData) {
-                        const datos = [...tipoEntidad];
+                        const datos = [...tipoActividadEconomica];
                         const index = datos.indexOf(oldData);
                         datos[index] =  newData;
-                        editarTipoEntidad(datos[index]).then(() => {
-                            setTipoEntidad(datos);
+                        editarTipoActividadEconomica(datos[index]).then(() => {
+                            setTipoActividadEconomica(datos);
                         });
                       }
                     }, 600);
@@ -103,12 +102,12 @@ console.log(tipoEntidad);
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...tipoActividadEconomica];
                       const datosAEliminar = datos[datos.indexOf(oldData)];
                       console.log(datosAEliminar._id);
-                      eliminarTipoEntidad(datosAEliminar._id).then(() => {
+                      eliminarTipoActividadEconomica(datosAEliminar._id).then(() => {
                         datos.splice(datos.indexOf(oldData),1);
-                        setTipoEntidad(datos);
+                        setTipoActividadEconomica(datos);
                       })
                     }, 600);
                   }),

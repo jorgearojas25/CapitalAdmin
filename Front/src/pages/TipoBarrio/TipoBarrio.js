@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Grid } from "@material-ui/core";
 import MaterialTable from "material-table";
 import {Check, Cancel} from "@material-ui/icons";
+import {ApiRoutes} from "../../utils/APIRoutes";
 
 // components
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -10,10 +11,10 @@ import IconosTabla from "../../components/TableIcons";
 
 export default function TipoBarrio() {
 const [tipoBarrio, setTipoBarrio] = useState([]);
-const url = 'http://localhost:5500/TipoBarrio';
+const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoBarrio}`;
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoBarrio')
+    const response = await window.fetch(url)
     const data = await response.json()
     setTipoBarrio(data.entidades);
   }

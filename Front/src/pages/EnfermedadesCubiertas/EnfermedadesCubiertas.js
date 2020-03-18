@@ -9,22 +9,20 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import IconosTabla from "../../components/TableIcons";
 
 
-export default function TipoEntidad() {
-const [tipoEntidad, setTipoEntidad] = useState([]);
-const myURI = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
-const url = 'http://localhost:5500/TipoEntidad';
-
+export default function EnfermedadesCubiertas() {
+const [enfermedadesCubiertas, setEnfermedadesCubiertas] = useState([]);
+const url = `${ApiRoutes.baseURI}${ApiRoutes.EnfermedadesCubiertas}`;
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoEntidad')
+    const response = await window.fetch(url)
     const data = await response.json()
-    setTipoEntidad(data.entidades);
+    setEnfermedadesCubiertas(data.entidades);
   }
   FetchData();
 
 },[]) 
 
-const agregarTipoEntidad = async(data) => {
+const agregarEnfermedadesCubiertas = async(data) => {
   fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
@@ -36,7 +34,7 @@ const agregarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const eliminarTipoEntidad = async(data) => {
+const eliminarEnfermedadesCubiertas = async(data) => {
   fetch(url+'/'+data, {
     method: 'DELETE', // or 'PUT'
     headers:{
@@ -47,7 +45,7 @@ const eliminarTipoEntidad = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
-const editarTipoEntidad = async(data) => {
+const editarEnfermedadesCubiertas = async(data) => {
     console.log(data);
     fetch(url, {
       method: 'PATCH', // or 'PUT'
@@ -60,28 +58,28 @@ const editarTipoEntidad = async(data) => {
     .then(response => console.log('Success:', response));
 }
 
-console.log(tipoEntidad);
-  if(tipoEntidad !== []) {
+console.log(enfermedadesCubiertas);
+  if(enfermedadesCubiertas !== []) {
     return (
       <>
-        <PageTitle title="Tipo Entidad" />
+        <PageTitle title="Enfermedades Cubiertas" />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <MaterialTable 
               columns={[
-                        {title: "Nombre",field:"NombreTipoEntidad"},
+                        {title: "Nombre",field:"NombreHistorialMedico"},
                         {title: "Activo", field:"Activo", lookup:{true:<Check></Check>, false:<Cancel></Cancel>}}]}
-              data= {tipoEntidad}
+              data= {enfermedadesCubiertas}
               title={""}
               editable={{
                 onRowAdd: newData =>
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...enfermedadesCubiertas];
                       datos.push(newData);
-                      agregarTipoEntidad(newData).then(() => {
-                        setTipoEntidad(datos);
+                      agregarEnfermedadesCubiertas(newData).then(() => {
+                        setEnfermedadesCubiertas(datos);
                       })
                     }, 600);
                   }),
@@ -90,11 +88,11 @@ console.log(tipoEntidad);
                     setTimeout(() => {
                       resolve();
                       if (oldData) {
-                        const datos = [...tipoEntidad];
+                        const datos = [...enfermedadesCubiertas];
                         const index = datos.indexOf(oldData);
                         datos[index] =  newData;
-                        editarTipoEntidad(datos[index]).then(() => {
-                            setTipoEntidad(datos);
+                        editarEnfermedadesCubiertas(datos[index]).then(() => {
+                            setEnfermedadesCubiertas(datos);
                         });
                       }
                     }, 600);
@@ -103,12 +101,12 @@ console.log(tipoEntidad);
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
-                      const datos = [...tipoEntidad];
+                      const datos = [...enfermedadesCubiertas];
                       const datosAEliminar = datos[datos.indexOf(oldData)];
                       console.log(datosAEliminar._id);
-                      eliminarTipoEntidad(datosAEliminar._id).then(() => {
+                      eliminarEnfermedadesCubiertas(datosAEliminar._id).then(() => {
                         datos.splice(datos.indexOf(oldData),1);
-                        setTipoEntidad(datos);
+                        setEnfermedadesCubiertas(datos);
                       })
                     }, 600);
                   }),
