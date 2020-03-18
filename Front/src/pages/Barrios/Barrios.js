@@ -1,39 +1,20 @@
 import React, {useState, useEffect} from "react";
-import { Grid } from "@material-ui/core";
-import MUIDataTable from "mui-datatables";
-
+import { Grid, Dialog, DialogContent, DialogActions } from "@material-ui/core";
+import MaterialTable from "material-table";
+import {DirectionsBus, Check} from "@material-ui/icons";
+import Maps from "../../pages/maps/Maps";
+import { Button } from "../../components/Wrappers";
 // components
 import PageTitle from "../../components/PageTitle";
-import Widget from "../../components/Widget";
-import Table from "./components/Table";
+import IconosTabla from "../../components/TableIcons";
 
-// data
-import mock from "../dashboard/mock";
+export default function Barrios()  {
 
+const [barrios, setBarrios] = useState([]);
+const [open, setOpen] = React.useState(false);
+const [fullWidth, setFullWidth] = React.useState(true);
+const [maxWidth, setMaxWidth] = React.useState('sm');
 
-const datatableData = [
-  ["Joe James", "Example Inc.", "Yonkers", "NY"],
-  ["John Walsh", "Example Inc.", "Hartford", "CT"],
-  ["Bob Herm", "Example Inc.", "Tampa", "FL"],
-  ["James Houston", "Example Inc.", "Dallas", "TX"],
-  ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
-  ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
-  ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
-  ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
-  ["Meral Elias", "Example Inc.", "Hartford", "CT"],
-  ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
-  ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
-  ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
-  ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
-  ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
-  ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
-  ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-  ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
-];
-
-export default function Tables() {
-
-  const [barrios, setBarrios] = useState([]);
 useEffect(() => {
   const FetchData = async () => {
     const response = await window.fetch('http://localhost:5500/barrios')
@@ -41,40 +22,113 @@ useEffect(() => {
     setBarrios(data.entidades);
   }
   FetchData();
-},[])
+
+},[]) 
+
+const handleClickOpen = () => {
+  setOpen(true);
+};
+
+const handleClose = () => {
+  setOpen(false);
+};
 
 console.log(barrios);
+  if(barrios !== []) {
+    return (
+      <>
+        <PageTitle title="Barrios" />
+        <Grid container spacing={2}>
+          <Grid item xs={8}>
+            <MaterialTable style={{width:"95%", height:"90%"}}
+              columns={[{title: "Nombre",
+                        field:"NombreBarrio"},
+                        {title: "Codigo Area", field:"IdArea"},
+                        {title: "Tipo Barrio", field: "IdTipoBarrio.NombreTipoBarrio"},
+                        {title: "Estrato Socio-Economico", field:"NivelSocioEconomico"},
+                        {title: "Tiene Rutas", field:"TieneRutas", lookup:{true:
+                              <Button
+                              type='button'
+                              color={"success"}
+                              size="small"
+                              className="px-2"
+                              variant="contained"
+                              onClick={() => handleClickOpen()}
+                            >
+                              <DirectionsBus></DirectionsBus>
+                            </Button>
+                          , false:"No"}}]}
+              data= {barrios}
+              title={"Informacion barrios"}
+              editable={{
+                onRowAdd: newData =>
+                  new Promise(resolve => {
+                    setTimeout(() => {
+                      resolve();
+                      setBarrios(prevState => {
+                        const data = [...prevState.data];
+                        data.push(newData);
+                        return { ...prevState, data };
+                      });
+                    }, 600);
+                  }),
+                onRowUpdate: (newData, oldData) =>
+                  new Promise(resolve => {
+                    setTimeout(() => {
+                      resolve();
+                      if (oldData) {
+                        setBarrios(prevState => {
+                          const data = [...prevState.data];
+                          data[data.indexOf(oldData)] = newData;
+                          return { ...prevState, data };
+                        });
+                      }
+                    }, 600);
+                  }),
+                onRowDelete: oldData =>
+                  new Promise(resolve => {
+                    setTimeout(() => {
+                      resolve();
+                      setBarrios(prevState => {
+                        const data = [...prevState.data];
+                        data.splice(data.indexOf(oldData), 1);
+                        return { ...prevState, data };
+                      });
+                    }, 600);
+                  }),
+              }}
+              icons={IconosTabla}            
+            /> 
+          </Grid>
+          <Grid item xs={4} style={{paddingTop:"3%"}} >
+            <Maps></Maps>
+          </Grid>
+        </Grid> 
+        <Dialog 
+            fullWidth={fullWidth}
+            maxWidth={maxWidth}
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="max-width-dialog-title">
+            <DialogContent>
+            <MaterialTable style={{width:"95%", height:"90%"}}
+                        columns={[{title: "Nombre Ruta", field:"Rutas[0].NombreRuta"},
+                                  {title: "Activa", field:"Rutas[0].Activo", lookup:{true:
+                                        <Check></Check>
+                                    , false:"No"}}]}
+                        data= {barrios}
+                        title={"Informacion Rutas"}
+                        icons={IconosTabla}            
+              /> 
+            </DialogContent>
+            <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                      OK
+                    </Button>
+            </DialogActions>
+          </Dialog>
+      </>
+    );
+  }
 
-  return (
-    <>
-      <PageTitle title="Tables" />
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox",
-            }}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox",
-            }}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Widget title="Material-UI Table" upperTitle noBodyPadding>
-            <Table data={mock.table} />
-          </Widget>
-        </Grid>
-      </Grid>
-    </>
-  );
 }

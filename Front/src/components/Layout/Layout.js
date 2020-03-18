@@ -22,6 +22,10 @@ import Maps from "../../pages/maps";
 import Tables from "../../pages/tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
+import TipoVivienda from "../../pages/TipoVivienda";
+import TipoEntidad from "../../pages/TipoEntidad";
+import TipoBarrio from "../../pages/TipoBarrio";
+import Barrios from "../../pages/Barrios"; 
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -48,14 +52,19 @@ function Layout(props) {
               <Route path="/app/typography" component={Typography} />
               <Route path="/app/tables" component={Tables} />
               <Route path="/app/notifications" component={Notifications} />
+              <Route path="/app/Barrios" component={Barrios}/>
               <Route
                 exact
                 path="/app/ui"
                 render={() => <Redirect to="/app/ui/icons" />}
               />
-              <Route path="/app/ui/maps" component={Maps} />
-              <Route path="/app/ui/icons" component={Icons} />
-              <Route path="/app/ui/charts" component={Charts} />
+              <Route path="/app/Parametros/TipoVivienda" component={TipoVivienda} />
+              <Route path="/app/Parametros/TipoBarrio" component={TipoBarrio} />
+              <Route path="/app/Parametros/TipoEntidad" component={TipoEntidad} />
+              <Route path="/app/Parametros/TipoEducacion" component={Maps} />
+              <Route path="/app/Parametros/TipoActividadEconomica" component={Icons} />
+              <Route path="/app/Parametros/Rutas" component={Charts} />
+              <Route path="app/Parametros/EnfermedadesCubiertas"component={Charts} />
             </Switch>
           </div>
         </>

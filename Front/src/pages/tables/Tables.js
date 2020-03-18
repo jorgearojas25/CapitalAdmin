@@ -52,8 +52,11 @@ console.log(barrios);
         <Grid item xs={12}>
           <MUIDataTable
             title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
+            data={barrios}
+            columns={[{label:"Nombre Barrio", name:"NombreBarrio"},
+            {label:"Codigo Area", name:"IdArea"},
+            {label:"Nombre Tipo Barrio",name:"IdTipoBarrio.NombreTipoBarrio"},
+            {label:"Nivel Socio Economico", name:"NivelSocioEconomico"}]}
             options={{
               filterType: "checkbox",
             }}
