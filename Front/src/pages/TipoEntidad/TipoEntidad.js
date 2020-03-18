@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Grid } from "@material-ui/core";
 import MaterialTable from "material-table";
 import {Check, Cancel} from "@material-ui/icons";
+import {ApiRoutes} from "../../utils/APIRoutes";
 
 // components
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -10,7 +11,9 @@ import IconosTabla from "../../components/TableIcons";
 
 export default function TipoEntidad() {
 const [tipoEntidad, setTipoEntidad] = useState([]);
+const myURI = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
 const url = 'http://localhost:5500/TipoEntidad';
+
 useEffect(() => {
   const FetchData = async () => {
     const response = await window.fetch('http://localhost:5500/TipoEntidad')

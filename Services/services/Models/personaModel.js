@@ -9,7 +9,8 @@ const mySchema = new Schema({
     PrimerNombre:{type: String, required: true},
     SegundoNombre: String,
     PrimerApellido: {type: String, required: true},
-    SegundoApellido: String
+    SegundoApellido: String,
+    NumeroIdentificacion: String
 });
 
 const model = mongoose.model("Persona", mySchema);

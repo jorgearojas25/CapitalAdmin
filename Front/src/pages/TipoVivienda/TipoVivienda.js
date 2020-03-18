@@ -10,7 +10,7 @@ import IconosTabla from "../../components/TableIcons";
 
 export default function TipoVivienda() {
 const [tipoVivienda, setTipoVivienda] = useState([]);
-
+const url = 'http://localhost:5500/TipoVivienda/';
 useEffect(() => {
   const FetchData = async () => {
     const response = await window.fetch('http://localhost:5500/TipoVivienda')
@@ -46,6 +46,19 @@ const eliminarTipoVivienda = async(data) => {
   .then(response => console.log('Success:', response));
 }
 
+const editarTipoVivienda = async(data) => {
+  console.log(data);
+  fetch(url, {
+    method: 'PATCH', // or 'PUT'
+    body: JSON.stringify(data), // data can be `string` or {object}!
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+  .catch(error => console.error('Error:', error))
+  .then(response => console.log('Success:', response));
+}
+
 console.log(tipoVivienda);
   if(tipoVivienda !== []) {
     return (
@@ -71,7 +84,7 @@ console.log(tipoVivienda);
                       })
                     }, 600);
                   }),
-                onRowUpdate: (newData, oldData) =>
+                  onRowUpdate: (newData, oldData) =>
                   new Promise(resolve => {
                     setTimeout(() => {
                       resolve();
@@ -79,7 +92,9 @@ console.log(tipoVivienda);
                         const datos = [...tipoVivienda];
                         const index = datos.indexOf(oldData);
                         datos[index] =  newData;
-                        setTipoVivienda(datos);
+                        editarTipoVivienda(datos[index]).then(() => {
+                            setTipoVivienda(datos);
+                        });
                       }
                     }, 600);
                   }),
