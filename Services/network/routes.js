@@ -18,6 +18,7 @@ const personaMenor = require("../services/1.network/personaMenorNetwork");
 const tipoEducacion = require("../services/1.network/tipoEducacionNetwork");
 const tipoEntidad = require("../services/1.network/tipoEntidadNetwork");
 const tipoPersona = require("../services/1.network/tipoPersonaNetwork");
+const data = require("../services/1.network/dataNetwork");
 
 const routes = server => {
   server.use("/message", message);
@@ -39,6 +40,7 @@ const routes = server => {
   server.use("/tipoEducacion", tipoEducacion);
   server.use("/tipoEntidad", tipoEntidad);
   server.use("/tipoPersona", tipoPersona);
+  server.use("/data", data);
 };
 
 module.exports = routes;

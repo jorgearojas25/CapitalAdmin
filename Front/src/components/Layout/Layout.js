@@ -62,6 +62,10 @@ function Layout(props) {
                 path="/app/ui"
                 render={() => <Redirect to="/app/ui/icons" />}
               />
+              
+              <Route path="/app/ui/icons" component={Icons}/>
+              <Route path="/app/ui/charts" component={Charts}/>
+              <Route path="/app/ui/maps" component={Maps}/>
               <Route path="/app/Parametros/TipoVivienda" component={TipoVivienda} />
               <Route path="/app/Parametros/TipoBarrio" component={TipoBarrio} />
               <Route path="/app/Parametros/TipoEntidad" component={TipoEntidad} />
