@@ -96,7 +96,7 @@ export default function Personas() {
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     });
     const respData = await respuesta.json();
     setIdPersona(respData.entidades._id);
