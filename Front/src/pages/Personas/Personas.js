@@ -5,6 +5,7 @@ import PersonaForm from "./components/PersonaForm";
 import PersonaMenorForm from "./components/PersonaMenorForm";
 import PersonaJovenForm from "./components/PersonaJovenForm";
 import PersonaAdultaForm from "./components/PersonaAdultaForm";
+import {ApiRoutes} from "../../utils/APIRoutes";
 
 export default function Personas() {
   const [persona, setPersona] = useState([]);
@@ -13,21 +14,24 @@ export default function Personas() {
   const [formMenor, setFormMenor] = useState(false);
   const [formJoven, setFormJoven] = useState(false);
   const [formAdulto, setFormAdulto] = useState(false);
+  const [idPersona, setIdPersona] = useState("");
 
-  const url = "http://localhost:5500/Persona";
-  const url2 = "http://localhost:5500/Familia";
+  const urlPersona = `${ApiRoutes.baseURI}${ApiRoutes.Persona}`;
+  const urlFamilia = `${ApiRoutes.baseURI}${ApiRoutes.Familia}`;
+  const urlJoven = `${ApiRoutes.baseURI}${ApiRoutes.PersonaJoven}`;
+  const urlMenor = `${ApiRoutes.baseURI}${ApiRoutes.PersonaMenor}`;
 
   useEffect(() => {
     const FetchData = async () => {
-      const response = await window.fetch(url);
+      const response = await window.fetch(urlPersona);
       const data = await response.json();
       setPersona(data.entidades);
     };
     const FetchDataFamilia = async () => {
-        const respuesta = await window.fetch(url2);
-        const dataFamilia = await respuesta.json();
-        setFamilia(dataFamilia.entidades);
-    }
+      const respuesta = await window.fetch(urlFamilia);
+      const dataFamilia = await respuesta.json();
+      setFamilia(dataFamilia.entidades);
+    };
     FetchData();
     FetchDataFamilia();
   }, []);
@@ -40,34 +44,67 @@ export default function Personas() {
     setAbrir(false);
   };
 
-  const abrirFormularioTipo = (tipoForm) => {
-    if (tipoForm === 1) {
-        setFormMenor(true);
-    }
-    if (tipoForm === 2) {
-        setFormJoven(true);
-    }
-    if (tipoForm === 3) {
-       setFormAdulto(true);
-    }
-  }
+  const cerrarFormularioJoven = () => {
+    setFormJoven(false);
+  };
 
-  const agregarPersona = async (data) => {
-    debugger;
-    fetch(url, {
+  const cerrarFormularioMenor = () => {
+    setFormMenor(false);
+  };
+
+  const abrirFormularioTipo = tipoForm => {
+    if (tipoForm.TipoPersona === 1) {
+      setAbrir(false);
+      setFormMenor(true);
+    }
+    if (tipoForm.TipoPersona === 2) {
+      setAbrir(false);
+      setFormJoven(true);
+    }
+    if (tipoForm.TipoPersona === 3) {
+      setAbrir(false);
+      setFormAdulto(true);
+    }
+  };
+
+  const agregarJoven = async data => {
+    const respuesta = await fetch(urlJoven, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then(res => abrirFormularioTipo(res.json().entidades))
-      .catch(error => console.error("Error:", error))
-      .then(response => console.log("Success:", response));
+    });
+    const respData = await respuesta.json();
+    console.log("Esta es la respuesta de joven " + respData);
+  };
+
+  const agregarMenor = async data => {
+    const respuesta = await fetch(urlMenor, {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const respData = await respuesta.json();
+    console.log("Esta es la respuesta de menor " + respData);
+  }
+  const agregarPersona = async data => {
+    const respuesta = await fetch(urlPersona, {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const respData = await respuesta.json();
+    setIdPersona(respData.entidades._id);
+    abrirFormularioTipo(respData.entidades);
   };
 
   const eliminarPersona = async data => {
-    fetch(url + "/" + data, {
+    fetch(urlPersona + "/" + data, {
       method: "DELETE", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +117,7 @@ export default function Personas() {
 
   const editarPersona = async data => {
     console.log(data);
-    fetch(url, {
+    fetch(urlPersona, {
       method: "PATCH", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: {
@@ -96,22 +133,36 @@ export default function Personas() {
     <>
       <PersonaTable data={persona} agregar={abrirFormulario}></PersonaTable>
       {abrir && familia ? (
-        <PersonaForm abrir={abrir}
-         cerrar={cerrarFormulario} familia={familia} agregarPersona = {agregarPersona}
-         ></PersonaForm>
+        <PersonaForm
+          abrir={abrir}
+          cerrar={cerrarFormulario}
+          familia={familia}
+          agregarPersona={agregarPersona}
+        ></PersonaForm>
       ) : (
         false
       )}
-      {formMenor? (
-        <PersonaMenorForm></PersonaMenorForm>
-      ):(false)}
-      {formJoven? (
-        <PersonaJovenForm></PersonaJovenForm>
-      ):(false)}
-      {formAdulto?(
-        <PersonaAdultaForm></PersonaAdultaForm>
-      ):(false)}
-      
+      {formMenor ? (
+        <PersonaMenorForm
+          abrir={formMenor}
+          cerrar={cerrarFormularioMenor}
+          idPersona={idPersona}
+          agregarMenor={agregarMenor}
+        ></PersonaMenorForm>
+      ) : (
+        false
+      )}
+      {formJoven ? (
+        <PersonaJovenForm
+          abrir={formJoven}
+          cerrar={cerrarFormularioJoven}
+          idPersona={idPersona}
+          agregarJoven={agregarJoven}
+        ></PersonaJovenForm>
+      ) : (
+        false
+      )}
+      {formAdulto ? <PersonaAdultaForm></PersonaAdultaForm> : false}
     </>
   );
 }

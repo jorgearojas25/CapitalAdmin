@@ -29,7 +29,7 @@ export default function PersonaForm({ abrir, cerrar, familia, agregarPersona }) 
       SegundoApellido: "",
       LugarDeNacimiento: "",
       FechaDeNacimiento: "",
-      NumeroDeIdentificacion: "",
+      NumeroIdentificacion: "",
     },
   );
 
@@ -54,7 +54,7 @@ export default function PersonaForm({ abrir, cerrar, familia, agregarPersona }) 
     if (
       datos.PrimerNombre === "" ||
       datos.PrimerApellido === "" ||
-      datos.NumeroDeIdentificacion === "" ||
+      datos.NumeroIdentificacion === "" ||
       datos.LugarDeNacimiento === "" ||
       datos.FechaDeNacimiento === "" ||
       datos.IdFamilia === 0
@@ -142,7 +142,7 @@ export default function PersonaForm({ abrir, cerrar, familia, agregarPersona }) 
                   <TextField
                     autoFocus
                     margin="dense"
-                    name="NumeroDeIdentificacion"
+                    name="NumeroIdentificacion"
                     label="Numero de identificacion"
                     type="text"
                     required
@@ -169,9 +169,10 @@ export default function PersonaForm({ abrir, cerrar, familia, agregarPersona }) 
                 <KeyboardDatePicker
                   margin="normal"
                   name="FechaDeNacimiento"
-                  label="Fecha Nacimiento"
+                  label={datos.FechaDeNacimiento? "":"Fecha de Nacimiento"}
                   required
                   format="MM/dd/yyyy"
+                  value={datos.FechaDeNacimiento}
                   onChange={fecha =>
                     // tslint:disable-next-line:no-object-literal-type-assertion
                     cambiarInformacion({

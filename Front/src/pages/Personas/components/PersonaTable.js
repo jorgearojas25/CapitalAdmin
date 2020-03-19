@@ -37,6 +37,7 @@ export default function PersonaTable({data, agregar}) {
                 { 
                     icon: () => <AddIcon color="action"></AddIcon>,
                     tooltip: "Agregar",
+                    isFreeAction:true,
                     onClick: () => agregarPersona()
                 }]}
             /> 

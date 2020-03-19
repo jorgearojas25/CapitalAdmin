@@ -4,6 +4,7 @@ import MaterialTable from "material-table";
 import {DirectionsBus, Check} from "@material-ui/icons";
 import Maps from "../../pages/maps/Maps";
 import { Button } from "../../components/Wrappers";
+import {ApiRoutes} from "../../utils/APIRoutes";
 // components
 import PageTitle from "../../components/PageTitle";
 import IconosTabla from "../../components/TableIcons";
@@ -15,9 +16,11 @@ const [open, setOpen] = React.useState(false);
 const [fullWidth, setFullWidth] = React.useState(true);
 const [maxWidth, setMaxWidth] = React.useState('sm');
 
+const urlBarrios = `${ApiRoutes.baseURI}${ApiRoutes.Barrios}`;
+
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/barrios')
+    const response = await window.fetch(urlBarrios)
     const data = await response.json()
     setBarrios(data.entidades);
   }
