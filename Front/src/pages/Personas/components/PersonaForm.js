@@ -8,8 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import InputLabel from "@material-ui/core/InputLabel";
 
 import {
   MuiPickersUtilsProvider,
@@ -17,11 +16,11 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
-export default function PersonaForm({ abrir, cerrar, familia }) {
+export default function PersonaForm({ abrir, cerrar, familia, agregarPersona }) {
   const [fullWidth, setFullWidth] = useState(true);
   const [maxWidth, setMaxWidth] = useState("md");
   const [open, setOpen] = useState(abrir);
-  const [datos, setDatos] = useState([
+  const [datos, setDatos] = useState(
     {
       IdFamilia: 0,
       PrimerNombre: "",
@@ -32,7 +31,7 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
       FechaDeNacimiento: "",
       NumeroDeIdentificacion: "",
     },
-  ]);
+  );
 
   const cerrarFormulario = () => {
     let funcion = cerrar;
@@ -44,18 +43,27 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
     setDatos({ ...datos, [name]: type === "checkbox" ? checked : value });
   };
 
-  const validarDatos = () => {
-    if (
-      datos.PrimerNombre === null ||
-      datos.PrimerApellido === null ||
-      datos.LugarDeNacimiento === null ||
-      datos.FechaDeNacimiento === null ||
-      datos.NumeroDeIdentificacion === null
-    ) {
-      alert("Debes llenar todos los campos obligatorios");
-      return false;
+  const agregar = () => {
+    if(validar()) {
+      let funcionAg = agregarPersona;
+      funcionAg(datos);
     }
-    return true;
+  }
+  const validar = () => {
+    console.log(datos);
+    if (
+      datos.PrimerNombre === "" ||
+      datos.PrimerApellido === "" ||
+      datos.NumeroDeIdentificacion === "" ||
+      datos.LugarDeNacimiento === "" ||
+      datos.FechaDeNacimiento === "" ||
+      datos.IdFamilia === 0
+    ) {
+      alert("Tiene que llenar todos los campos obligatorios");
+      return false
+    } else {
+      return true;
+    }
   };
 
   return (
@@ -80,13 +88,9 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                 name="PrimerNombre"
                 label="Primer Nombre"
                 type="text"
+                required
                 fullWidth
-                value={datos.PrimerNombre}
-                onChange={e =>
-                  cambiarInformacion({
-                    target: { name: "PrimerNombre", value: e },
-                  })
-                }
+                onChange={cambiarInformacion}
               />
             </Grid>
             <Grid item xs={4}>
@@ -97,7 +101,6 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                 label="Segundo Nombre"
                 type="text"
                 fullWidth
-                value={datos.SegundoNombre}
                 onChange={cambiarInformacion}
               />
             </Grid>
@@ -110,7 +113,6 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                 type="text"
                 fullWidth
                 required
-                value={datos.PrimerApellido}
                 onChange={cambiarInformacion}
               />
             </Grid>
@@ -122,7 +124,6 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                 label="Segundo Apellido"
                 type="text"
                 fullWidth
-                value={datos.SegundoApellido}
                 onChange={cambiarInformacion}
               />
             </Grid>
@@ -146,7 +147,6 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                     type="text"
                     required
                     fullWidth
-                    value={datos.NumeroDeIdentificacion}
                     onChange={cambiarInformacion}
                   />
                 </Grid>
@@ -159,7 +159,6 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                 name="LugarDeNacimiento"
                 label="Lugar de nacimiento"
                 type="text"
-                value={datos.LugarDeNacimiento}
                 fullWidth
                 required
                 onChange={cambiarInformacion}
@@ -173,7 +172,6 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
                   label="Fecha Nacimiento"
                   required
                   format="MM/dd/yyyy"
-                  value={datos.FechaDeNacimiento}
                   onChange={fecha =>
                     // tslint:disable-next-line:no-object-literal-type-assertion
                     cambiarInformacion({
@@ -187,13 +185,30 @@ export default function PersonaForm({ abrir, cerrar, familia }) {
               </MuiPickersUtilsProvider>
             </Grid>
             <Grid item xs={4}>
-                <List>{familia.map((f) => (<ListItem key={f._id} name="IdFamilia" onChange={cambiarInformacion}>{f.Nombre}</ListItem>))}</List>
+              <div style={{ paddingTop: "6.5%" }}>
+                <InputLabel id="label-flia">Familia *</InputLabel>
+                <Select
+                  labelId="label-flia"
+                  name="IdFamilia"
+                  fullWidth
+                  required
+                  onChange={cambiarInformacion}
+                >
+                  {familia.map(f => (
+                    <MenuItem required key={f._id} value={f._id}>
+                      {f.NombreFamilia}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </div>
             </Grid>
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => validarDatos()}></Button>
-          <Button onClick={() => cerrarFormulario()} color="primary">
+          <Button onClick={() => agregar()} color="primary">
+            Guardar
+          </Button>
+          <Button onClick={() => cerrarFormulario()} color="secondary">
             Cerrar
           </Button>
         </DialogActions>
