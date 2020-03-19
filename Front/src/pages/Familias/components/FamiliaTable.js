@@ -8,9 +8,9 @@ import PageTitle from "../../../components/PageTitle";
 import IconosTabla from "../../../components/TableIcons";
 
 
-export default function EntidadTable({data, abrirFormulario}) {
+export default function FamiliaTable({data, abrirFormulario}) {
 
-  const abrirEntidad = () => {
+  const abrirFamilia = () => {
       let funcion = abrirFormulario;
       funcion();
    };
@@ -18,15 +18,18 @@ export default function EntidadTable({data, abrirFormulario}) {
   if(data !== []) {
     return (
       <>
-        <PageTitle title="Datos entidad" />
+        <PageTitle title="Datos familia" />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <MaterialTable 
               columns={[
-                        {title: "Nombre Entidad",field:"NombreEntidad"},
-                        {title: "Actividad Economica",field:"IdActividadEconomica.NombreTipoActividadEconomica"},
-                        {title: "Tipo Entidad",field:"IdTipoEntidad.NombreTipoEntidad"},
+                        {title: "Nombre Familia",field:"NombreFamilia"},
+                        {title: "Calle",field:"Calle"},
+                        {title: "Numero",field:"Numero"},
+                        {title: "Telefono",field:"Numero"},
+                        {title: "Tipo Vivienda",field:"IdTipoVivienda.NombreTipoVivienda"},
                         {title: "Barrio",field:"IdBarrio.NombreBarrio"},
+                        {title: "Ingreso Familiar",field:"IngresoFamiliar"},
                         ]}
               data= {data}
               title={""}
@@ -36,7 +39,7 @@ export default function EntidadTable({data, abrirFormulario}) {
                     icon: () => <AddIcon color="action"></AddIcon>,
                     tooltip: "Agregar",
                     isFreeAction:true,
-                    onClick: () => abrirEntidad()
+                    onClick: () => abrirFamilia()
                 }]}
             /> 
           </Grid>

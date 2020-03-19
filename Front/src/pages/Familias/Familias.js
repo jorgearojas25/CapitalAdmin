@@ -1,18 +1,19 @@
+
 import React, { useEffect, useState } from "react";
-import EntidadTable from "./components/EntidadTable";
+import FamiliaTable from "./components/FamiliaTable";
 import { ApiRoutes } from "../../utils/APIRoutes";
 
 export default function Entidades() {
-  const [entidad, setEntidad] = useState([]);
+  const [familia, setFamilia] = useState([]);
   const [abrir, setAbrir] = useState(false);
 
-  const urlEntidad = `${ApiRoutes.baseURI}${ApiRoutes.Entidad}`;
+  const urlFamilia = `${ApiRoutes.baseURI}${ApiRoutes.Familia}`;
 
   useEffect(() => {
     const FetchData = async () => {
-      const response = await window.fetch(urlEntidad);
+      const response = await window.fetch(urlFamilia);
       const data = await response.json();
-      setEntidad(data.entidades);
+      setFamilia(data.entidades);
     };
     FetchData();
   }, []);
@@ -27,10 +28,10 @@ export default function Entidades() {
 
   return (
     <>
-      <EntidadTable
-        data={entidad}
+      <FamiliaTable
+        data={familia}
         abrirFormulario={abrirFormulario}
-      ></EntidadTable>
+      ></FamiliaTable>
     </>
   );
 }

@@ -33,7 +33,7 @@ import Barrios from "../../pages/Barrios";
 import Personas from "../../pages/Personas";
 import Areas from "../../pages/Localidades";
 import Entidades from "../../pages/Entidades";
-
+import Familias from "../../pages/Familias";
 // context
 import { useLayoutState } from "../../context/LayoutContext";
 
@@ -62,6 +62,7 @@ function Layout(props) {
               <Route path="/app/Barrios" component={Barrios}/>
               <Route path="/app/Personas" component={Personas}/>
               <Route path="/app/Entidades" component={Entidades}/>
+              <Route path="/app/Familia" component={Familias}/>
               <Route
                 exact
                 path="/app/ui"
