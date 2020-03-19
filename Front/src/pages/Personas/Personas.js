@@ -5,7 +5,7 @@ import PersonaForm from "./components/PersonaForm";
 import PersonaMenorForm from "./components/PersonaMenorForm";
 import PersonaJovenForm from "./components/PersonaJovenForm";
 import PersonaAdultaForm from "./components/PersonaAdultaForm";
-import {ApiRoutes} from "../../utils/APIRoutes";
+import { ApiRoutes } from "../../utils/APIRoutes";
 
 export default function Personas() {
   const [persona, setPersona] = useState([]);
@@ -20,6 +20,7 @@ export default function Personas() {
   const urlFamilia = `${ApiRoutes.baseURI}${ApiRoutes.Familia}`;
   const urlJoven = `${ApiRoutes.baseURI}${ApiRoutes.PersonaJoven}`;
   const urlMenor = `${ApiRoutes.baseURI}${ApiRoutes.PersonaMenor}`;
+  const urlAdulto = `${ApiRoutes.baseURI}${ApiRoutes.PersonaAdulta}`;
 
   useEffect(() => {
     const FetchData = async () => {
@@ -52,19 +53,34 @@ export default function Personas() {
     setFormMenor(false);
   };
 
+  const cerrarFormularioAdulto = () => {
+    setFormAdulto(false);
+  };
+
   const abrirFormularioTipo = tipoForm => {
+    setAbrir(false);
     if (tipoForm.TipoPersona === 1) {
-      setAbrir(false);
       setFormMenor(true);
     }
-    if (tipoForm.TipoPersona === 2) {
-      setAbrir(false);
+    else if (tipoForm.TipoPersona === 2) {
       setFormJoven(true);
     }
-    if (tipoForm.TipoPersona === 3) {
-      setAbrir(false);
+    else if (tipoForm.TipoPersona === 3) {
       setFormAdulto(true);
+      debugger;
     }
+  };
+
+  const agregarAdulto = async data => {
+    const respuesta = await fetch(urlAdulto, {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const respData = await respuesta.json();
+    console.log("Esta es la respuesta de adulto " + respData);
   };
 
   const agregarJoven = async data => {
@@ -89,14 +105,14 @@ export default function Personas() {
     });
     const respData = await respuesta.json();
     console.log("Esta es la respuesta de menor " + respData);
-  }
+  };
   const agregarPersona = async data => {
     const respuesta = await fetch(urlPersona, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     });
     const respData = await respuesta.json();
     setIdPersona(respData.entidades._id);
@@ -152,6 +168,16 @@ export default function Personas() {
       ) : (
         false
       )}
+      {formAdulto ? (
+        <PersonaAdultaForm
+          abrir={formAdulto}
+          cerrar={cerrarFormularioAdulto}
+          idPersona={idPersona}
+          agregarAdulto={agregarAdulto}
+        ></PersonaAdultaForm>
+      ) : (
+        false
+      )}  
       {formJoven ? (
         <PersonaJovenForm
           abrir={formJoven}
@@ -162,7 +188,6 @@ export default function Personas() {
       ) : (
         false
       )}
-      {formAdulto ? <PersonaAdultaForm></PersonaAdultaForm> : false}
     </>
   );
 }
