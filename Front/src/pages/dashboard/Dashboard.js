@@ -65,11 +65,11 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <PageTitle title="Dashboard" button="Latest Reports" />
+      <PageTitle title="Dashboard" button="Generar Reportes" />
       <Grid container spacing={4}>
         <Grid item lg={3} md={4} sm={6} xs={12}>
           <Widget
-            title="Visits Today"
+            title="Visitas Hoy"
             upperTitle
             bodyClass={classes.fullHeightBody}
             className={classes.card}
@@ -215,7 +215,7 @@ export default function Dashboard(props) {
             header={
               <div className={classes.mainChartHeader}>
                 <Typography
-                  variant="h5"
+                  variant="h5" 
                   color="text"
                   colorBrightness="secondary"
                 >

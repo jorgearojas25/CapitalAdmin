@@ -32,42 +32,43 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
-  {
-    id: 1,
-    label: "Typography",
-    link: "/app/typography",
-    icon: <TypographyIcon />,
-  },
-  { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
-  {
-    id: 3,
-    label: "Notifications",
-    link: "/app/notifications",
-    icon: <NotificationsIcon />,
-  },
+  // {
+  //   id: 1,
+  //   label: "Typography",
+  //   link: "/app/typography",
+  //   icon: <TypographyIcon />,
+  // },
+  // { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
+  // {
+  //   id: 3,
+  //   label: "Notifications",
+  //   link: "/app/notifications",
+  //   icon: <NotificationsIcon />,
+  // },
   {
     id: 4,
     label: "Barrios",
     link: "/app/Barrios",
     icon: <HomeWorkIcon />,
   },
-  {
-    id: 5,
-    label: "UI Elements",
-    link: "/app/ui",
-    icon: <UIElementsIcon />,
-    children: [
-      { label: "Icons", link: "/app/ui/icons" },
-      { label: "Charts", link: "/app/ui/charts" },
-      { label: "Maps", link: "/app/ui/maps" },
-    ],
-  },
+  // {
+  //   id: 5,
+  //   label: "UI Elements",
+  //   link: "/app/ui",
+  //   icon: <UIElementsIcon />,
+  //   children: [
+  //     { label: "Icons", link: "/app/ui/icons" },
+  //     { label: "Charts", link: "/app/ui/charts" },
+  //     { label: "Maps", link: "/app/ui/maps" },
+  //   ],
+  // },
   {
     id: 7,
     label: "Parametros",
     link: "/app/Parametros",
     icon: <UIElementsIcon />,
     children: [
+      { label: "Localidades", link: "/app/Parametros/Localidades" },
       { label: "Tipo vivienda", link: "/app/Parametros/TipoVivienda" },
       { label: "Tipo barrio", link: "/app/Parametros/TipoBarrio" },
       { label: "Tipo entidad", link: "/app/Parametros/TipoEntidad" },
@@ -82,26 +83,26 @@ const structure = [
   { id: 10, label: "Library", link: "", icon: <LibraryIcon /> },
   { id: 11, label: "Support", link: "", icon: <SupportIcon /> },
   { id: 12, label: "FAQ", link: "", icon: <FAQIcon /> },
-  { id: 13, type: "divider" },
-  { id: 14, type: "title", label: "PROJECTS" },
-  {
-    id: 15,
-    label: "My recent",
-    link: "",
-    icon: <Dot size="large" color="warning" />,
-  },
-  {
-    id: 16,
-    label: "Starred",
-    link: "",
-    icon: <Dot size="large" color="primary" />,
-  },
-  {
-    id: 17,
-    label: "Background",
-    link: "",
-    icon: <Dot size="large" color="secondary" />,
-  },
+  // { id: 13, type: "divider" },
+  // { id: 14, type: "title", label: "PROJECTS" },
+  // {
+  //   id: 15,
+  //   label: "My recent",
+  //   link: "",
+  //   icon: <Dot size="large" color="warning" />,
+  // },
+  // {
+  //   id: 16,
+  //   label: "Starred",
+  //   link: "",
+  //   icon: <Dot size="large" color="primary" />,
+  // },
+  // {
+  //   id: 17,
+  //   label: "Background",
+  //   link: "",
+  //   icon: <Dot size="large" color="secondary" />,
+  // },
 ];
 
 function Sidebar({ location }) {
