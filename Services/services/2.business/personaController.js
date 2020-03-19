@@ -7,7 +7,9 @@ const tipoPersonaController = require("./tipoPersonaController");
 const AddPersona = body => {
   return new Promise(async (resolve, reject) => {
     let objAdd = new objPersona(body);
+    console.log(body);
     let enumTipoPersona = evaluarTipoPersona(objAdd.FechaDeNacimiento);
+    console.log(enumTipoPersona);
     let tipoPersona =  definirTipoPersona(enumTipoPersona);
     let consultaTipoPersona = await tipoPersonaController.GetTipoPersona({NombreTipoPersona: tipoPersona});
     objAdd.IdTipoPersona = consultaTipoPersona[0]._id;
