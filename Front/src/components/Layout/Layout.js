@@ -30,6 +30,7 @@ import TipoActividadEconomica from "../../pages/TipoActividadEconomica";
 import Rutas from "../../pages/Rutas";
 import EnfermedadesCubiertas from "../../pages/EnfermedadesCubiertas";
 import Barrios from "../../pages/Barrios"; 
+import Personas from "../../pages/Personas";
 import Areas from "../../pages/Localidades";
 
 // context
@@ -58,6 +59,7 @@ function Layout(props) {
               <Route path="/app/tables" component={Tables} />
               <Route path="/app/notifications" component={Notifications} />
               <Route path="/app/Barrios" component={Barrios}/>
+              <Route path="/app/Personas" component={Personas}/>
               <Route
                 exact
                 path="/app/ui"

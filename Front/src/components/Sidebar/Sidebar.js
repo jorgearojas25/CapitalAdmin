@@ -11,6 +11,7 @@ import {
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
   HomeWork as HomeWorkIcon,
+  People as PeopleIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -51,17 +52,23 @@ const structure = [
     link: "/app/Barrios",
     icon: <HomeWorkIcon />,
   },
-  // {
-  //   id: 5,
-  //   label: "UI Elements",
-  //   link: "/app/ui",
-  //   icon: <UIElementsIcon />,
-  //   children: [
-  //     { label: "Icons", link: "/app/ui/icons" },
-  //     { label: "Charts", link: "/app/ui/charts" },
-  //     { label: "Maps", link: "/app/ui/maps" },
-  //   ],
-  // },
+  {
+    id: 5,
+    label: "Personas",
+    link: "/app/Personas",
+    icon: <PeopleIcon />,
+  },
+  {
+    id: 6,
+    label: "UI Elements",
+    link: "/app/ui",
+    icon: <UIElementsIcon />,
+    children: [
+      { label: "Icons", link: "/app/ui/icons" },
+      { label: "Charts", link: "/app/ui/charts" },
+      { label: "Maps", link: "/app/ui/maps" },
+    ],
+  },
   {
     id: 7,
     label: "Parametros",
