@@ -11,12 +11,11 @@ import IconosTabla from "../../components/TableIcons";
 
 export default function TipoEntidad() {
 const [tipoEntidad, setTipoEntidad] = useState([]);
-const myURI = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
-const url = 'http://localhost:5500/TipoEntidad';
+const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoEntidad}`;
 
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoEntidad')
+    const response = await window.fetch(url)
     const data = await response.json()
     setTipoEntidad(data.entidades);
   }

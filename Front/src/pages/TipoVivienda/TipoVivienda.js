@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Grid } from "@material-ui/core";
 import MaterialTable from "material-table";
 import {Check, Cancel} from "@material-ui/icons";
+import {ApiRoutes} from "../../utils/APIRoutes";
 
 // components
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -10,10 +11,10 @@ import IconosTabla from "../../components/TableIcons";
 
 export default function TipoVivienda() {
 const [tipoVivienda, setTipoVivienda] = useState([]);
-const url = 'http://localhost:5500/TipoVivienda/';
+const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoVivienda}`
 useEffect(() => {
   const FetchData = async () => {
-    const response = await window.fetch('http://localhost:5500/TipoVivienda')
+    const response = await window.fetch(url)
     const data = await response.json()
     setTipoVivienda(data.entidades);
   }
@@ -22,7 +23,7 @@ useEffect(() => {
 },[]) 
 
 const agregarTipoVivienda = async(data) => {
-  var url = 'http://localhost:5500/TipoVivienda';  
+  const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoVivienda}`
   fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
@@ -35,7 +36,7 @@ const agregarTipoVivienda = async(data) => {
 }
 
 const eliminarTipoVivienda = async(data) => {
-  var url = 'http://localhost:5500/TipoVivienda/'+data;  
+  const url = `${ApiRoutes.baseURI}${ApiRoutes.TipoVivienda}${data}`  
   fetch(url, {
     method: 'DELETE', // or 'PUT'
     headers:{
