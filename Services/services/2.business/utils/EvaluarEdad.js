@@ -1,7 +1,8 @@
 const EnumPersonas = require("../enums/TipoPersonaEnum");
 
 function calculateAge(birthday) {
-  var birthday_arr = birthday.split("-");
+  let trimBirth = birthday.split('T');
+  var birthday_arr = trimBirth[0].split("-");
   var birthday_date = new Date(
     birthday_arr[0],
     birthday_arr[1] - 1,
