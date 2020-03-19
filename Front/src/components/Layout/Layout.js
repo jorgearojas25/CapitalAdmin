@@ -32,6 +32,7 @@ import EnfermedadesCubiertas from "../../pages/EnfermedadesCubiertas";
 import Barrios from "../../pages/Barrios"; 
 import Personas from "../../pages/Personas";
 import Areas from "../../pages/Localidades";
+import Entidades from "../../pages/Entidades";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -60,6 +61,7 @@ function Layout(props) {
               <Route path="/app/notifications" component={Notifications} />
               <Route path="/app/Barrios" component={Barrios}/>
               <Route path="/app/Personas" component={Personas}/>
+              <Route path="/app/Entidades" component={Entidades}/>
               <Route
                 exact
                 path="/app/ui"

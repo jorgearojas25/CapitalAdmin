@@ -12,6 +12,7 @@ import {
   ArrowBack as ArrowBackIcon,
   HomeWork as HomeWorkIcon,
   People as PeopleIcon,
+  Domain as DomainIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -54,21 +55,27 @@ const structure = [
   },
   {
     id: 5,
+    label: "Entidades",
+    link: "/app/Entidades",
+    icon: <DomainIcon />,
+  },
+  {
+    id: 6,
     label: "Personas",
     link: "/app/Personas",
     icon: <PeopleIcon />,
   },
-  {
-    id: 6,
-    label: "UI Elements",
-    link: "/app/ui",
-    icon: <UIElementsIcon />,
-    children: [
-      { label: "Icons", link: "/app/ui/icons" },
-      { label: "Charts", link: "/app/ui/charts" },
-      { label: "Maps", link: "/app/ui/maps" },
-    ],
-  },
+  // {
+  //   id: 6,
+  //   label: "UI Elements",
+  //   link: "/app/ui",
+  //   icon: <UIElementsIcon />,
+  //   children: [
+  //     { label: "Icons", link: "/app/ui/icons" },
+  //     { label: "Charts", link: "/app/ui/charts" },
+  //     { label: "Maps", link: "/app/ui/maps" },
+  //   ],
+  // },
   {
     id: 7,
     label: "Parametros",
