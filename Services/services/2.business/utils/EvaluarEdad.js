@@ -8,7 +8,6 @@ function calculateAge(birthday) {
     birthday_arr[1] - 1,
     birthday_arr[2]
   );
-  console.log(birthday_arr);
   var ageDifMs = Date.now() - birthday_date.getTime();
   var ageDate = new Date(ageDifMs);
   return Math.abs(ageDate.getUTCFullYear() - 1970);
@@ -19,7 +18,7 @@ function evaluarTipoPersona(birthday) {
   console.log(edad);
   let respuesta = 0;
 
-  if (edad > 0 && edad < 7) {
+  if (edad >= 0 && edad < 7) {
       //console.log(`Menor ${edad}`)
     respuesta = EnumPersonas.PersonaMenor;
   } else {
