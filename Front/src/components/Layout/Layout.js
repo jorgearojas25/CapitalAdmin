@@ -30,6 +30,7 @@ import TipoActividadEconomica from "../../pages/TipoActividadEconomica";
 import Rutas from "../../pages/Rutas";
 import EnfermedadesCubiertas from "../../pages/EnfermedadesCubiertas";
 import Barrios from "../../pages/Barrios"; 
+import Areas from "../../pages/Localidades";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -62,10 +63,15 @@ function Layout(props) {
                 path="/app/ui"
                 render={() => <Redirect to="/app/ui/icons" />}
               />
-              
+               <Route
+                exact
+                path="/app/Parametros"
+                render={() => <Redirect to="/app/Parametros/Localidades" />}
+              />
               <Route path="/app/ui/icons" component={Icons}/>
               <Route path="/app/ui/charts" component={Charts}/>
               <Route path="/app/ui/maps" component={Maps}/>
+              <Route path="/app/Parametros/Localidades" component={Areas} />
               <Route path="/app/Parametros/TipoVivienda" component={TipoVivienda} />
               <Route path="/app/Parametros/TipoBarrio" component={TipoBarrio} />
               <Route path="/app/Parametros/TipoEntidad" component={TipoEntidad} />

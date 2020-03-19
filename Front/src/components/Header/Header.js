@@ -40,53 +40,53 @@ const messages = [
   {
     id: 0,
     variant: "warning",
-    name: "Jane Hew",
-    message: "Hey! How is it going?",
+    name: "Jorge Rojas",
+    message: "Profe todo esto es un mock nada mas",
     time: "9:32",
   },
   {
     id: 1,
     variant: "success",
-    name: "Lloyd Brown",
-    message: "Check out my new Dashboard",
+    name: "Daniela Martinez",
+    message: "Es parte de la presentacion de nuestro prototipo",
     time: "9:18",
   },
   {
     id: 2,
     variant: "primary",
-    name: "Mark Winstein",
-    message: "I want rearrange the appointment",
+    name: "Nicolas Gaona",
+    message: "Hola profe",
     time: "9:15",
   },
   {
     id: 3,
     variant: "secondary",
-    name: "Liana Dutti",
-    message: "Good news from sale department",
+    name: "Alvaro Hernandez",
+    message: "Bueno profe lo dejamos seguir",
     time: "9:09",
   },
 ];
 
 const notifications = [
-  { id: 0, color: "warning", message: "Check out this awesome ticket" },
+  // { id: 0, color: "warning", message: "Check out this awesome ticket" },
   {
     id: 1,
     color: "success",
     type: "info",
-    message: "What is the best way to get ...",
+    message: "Mucha de la informacion en el dashboard es generada aleatoriamente",
   },
-  {
-    id: 2,
-    color: "secondary",
-    type: "notification",
-    message: "This is just a simple notification",
-  },
-  {
-    id: 3,
-    color: "primary",
-    type: "e-commerce",
-    message: "12 new orders has arrived today",
-  },
+  // {
+  //   id: 2,
+  //   color: "secondary",
+  //   type: "notification",
+  //   message: "This is just a simple notification",
+  // },
+  // {
+  //   id: 3,
+  //   color: "primary",
+  //   type: "e-commerce",
+  //   message: "12 new orders has arrived today",
+  // },
 ];
 
 export default function Header(props) {
@@ -137,10 +137,9 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+          Capital Admin
         </Typography>
         <div className={classes.grow} />
-        <Button component={Link} href="https://flatlogic.com/templates/react-material-admin-full" variant={"outlined"} color={"secondary"} style={{marginRight: 24}}>Unlock full version</Button>
         <div
           className={classNames(classes.search, {
             [classes.searchFocused]: isSearchOpen,
@@ -289,15 +288,15 @@ export default function Header(props) {
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              John Smith
+              Profesor
             </Typography>
             <Typography
               className={classes.profileMenuLink}
               component="a"
               color="primary"
-              href="https://flatlogic.com"
+              href="https://github.com/jorgearojas25/CapitalAdmin"
             >
-              Flalogic.com
+              Repo con el codigo
             </Typography>
           </div>
           <MenuItem
