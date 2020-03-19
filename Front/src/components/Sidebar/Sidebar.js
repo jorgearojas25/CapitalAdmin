@@ -11,7 +11,9 @@ import {
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
   HomeWork as HomeWorkIcon,
-  People as PeopleIcon,
+  PersonPinCircle as PeopleIcon,
+  Domain as DomainIcon,
+  Group as GroupIcon,
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -54,6 +56,18 @@ const structure = [
   },
   {
     id: 5,
+    label: "Entidades",
+    link: "/app/Entidades",
+    icon: <DomainIcon />,
+  },
+  {
+    id: 6,
+    label: "Familias",
+    link: "/app/Familia",
+    icon: <GroupIcon />,
+  },
+  {
+    id: 7,
     label: "Personas",
     link: "/app/Personas",
     icon: <PeopleIcon />,
@@ -70,7 +84,7 @@ const structure = [
   //   ],
   // },
   {
-    id: 7,
+    id: 8,
     label: "Parametros",
     link: "/app/Parametros",
     icon: <UIElementsIcon />,
@@ -85,11 +99,11 @@ const structure = [
       { label: "Enfermedades cubiertas", link: "/app/Parametros/EnfermedadesCubiertas"}
     ],
   },
-  { id: 8, type: "divider" },
-  { id: 9, type: "title", label: "HELP" },
-  { id: 10, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 11, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 12, label: "FAQ", link: "", icon: <FAQIcon /> },
+  { id: 9, type: "divider" },
+  { id: 10, type: "title", label: "HELP" },
+  { id: 11, label: "Library", link: "", icon: <LibraryIcon /> },
+  { id: 12, label: "Support", link: "", icon: <SupportIcon /> },
+  { id: 13, label: "FAQ", link: "", icon: <FAQIcon /> },
   // { id: 13, type: "divider" },
   // { id: 14, type: "title", label: "PROJECTS" },
   // {
