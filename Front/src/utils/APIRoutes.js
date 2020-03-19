@@ -17,4 +17,6 @@ export const ApiRoutes = {
   PersonaMenor: "personaMenor/",
   TipoEducacion: "tipoEducacion/",
   TipoPersona: "tipoPersona/",
+  Data: "data/",
+  DataCantidadPersonas:"CantidadPersonas/"
 };

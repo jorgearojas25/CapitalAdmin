@@ -5,7 +5,7 @@ const response = require('../../network/response');
 const config = require('../../config');
 
 // Obtener todo, o filtrarlo 
-router.get("/", (req, res) => {
+router.get("/CantidadPersonas", (req, res) => {
     controller.GetNumeroPersonasPorTipo(req.body).then(data => 
         {
             response.success(req,res,data,200)
