@@ -1,5 +1,5 @@
 export const ApiRoutes = {
-  baseURI: "http://localhost:5500/",
+  baseURI: "https://limitless-retreat-92544.herokuapp.com/",
   Personas: "Personas/",
   TipoEntidad: "tipoEntidad/",
   TipoBarrio: "tipoBarrio/",
