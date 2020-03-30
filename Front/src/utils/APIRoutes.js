@@ -1,0 +1,23 @@
+export const ApiRoutes = {
+   baseURI: "https://limitless-retreat-92544.herokuapp.com/",
+  //baseURI: "http://localhost:5500/",
+  Personas: "Personas/",
+  TipoEntidad: "tipoEntidad/",
+  TipoBarrio: "tipoBarrio/",
+  Area: "area/",
+  Barrios: "barrios/",
+  Rutas: "ruta/",
+  TipoVivienda: "tipoVivienda/",
+  TipoActividadEconomica: "actividadEconomica/",
+  Entidad: "entidad/",
+  Familia: "familia/",
+  EnfermedadesCubiertas: "historialMedico/",
+  Persona: "persona/",
+  PersonaAdulta: "personaAdulta/",
+  PersonaJoven: "personaJoven/",
+  PersonaMenor: "personaMenor/",
+  TipoEducacion: "tipoEducacion/",
+  TipoPersona: "tipoPersona/",
+  Data: "data/",
+  DataCantidadPersonas:"CantidadPersonas/"
+};

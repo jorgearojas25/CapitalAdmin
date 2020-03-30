@@ -1,0 +1,23 @@
+{
+  "name": "capital-admin",
+  "version": 2,
+  "build": { "src": "server.js", "use": "@now/node-server" },
+  "routes": [
+    {
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "DB_USER": "@capital-admin-dbuser",
+    "DB_PASSWORD": "@capital-admin-dbpassword",
+    "DB_HOST": "@capital-admin-dbhost",
+    "DB_NAME": "@capital-admin-dbname-test"
+  }
+
+}
